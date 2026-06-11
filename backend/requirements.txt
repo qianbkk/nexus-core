@@ -1,40 +1,40 @@
 # Nexus Core - Backend Dependencies
-# Production-ready stack with security and performance
+# Production-ready stack with security and performance (ITERATION 1: Security Hardening)
 
 # Web Framework
-fastapi==0.109.2
-uvicorn[standard]==0.27.1
-python-multipart==0.0.6
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
 
 # Database
-sqlalchemy[asyncio]==2.0.25
-asyncpg==0.29.0
-alembic==1.13.1
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
 
 # Security
 python-jose[cryptography]==3.3.0
 passlib[argon2]==1.7.4
 argon2-cffi==23.1.0
-bcrypt==4.1.2
+bcrypt==4.2.1
 
 # Validation & Settings
-pydantic==2.5.3
-pydantic-settings==2.1.0
-email-validator==2.1.0.post1
+pydantic==2.10.4
+pydantic-settings==2.7.0
+email-validator==2.2.0
 
 # Redis
-redis==5.0.1
-aioredis==2.0.1
+redis==5.2.1
 
 # HTTP Client
-httpx==0.26.0
-aiohttp==3.9.3
+httpx==0.28.1
+aiohttp==3.11.11
 
 # Utilities
-python-dateutil==2.8.2
-tenacity==8.2.3
+python-dateutil==2.9.0.post0
+tenacity==9.0.0
+slowapi==0.2.1
 
 # Testing
-pytest==8.0.0
-pytest-asyncio==0.23.4
-pytest-cov==4.1.0
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
