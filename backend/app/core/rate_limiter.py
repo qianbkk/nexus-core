@@ -2,7 +2,7 @@
 Rate Limiter - Iteration 5: Advanced Rate Limiting with SlowAPI
 Production-grade request throttling with Redis backend
 """
-from slowapi import SlowAPILimiter, _rate_limit_exceeded_handler
+from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address, get_ipaddr
 from fastapi import Request, HTTPException
@@ -18,7 +18,8 @@ class NexusRateLimiter:
     """Advanced rate limiter with multiple strategies"""
     
     def __init__(self):
-        self.limiter = SlowAPILimiter(
+        self.limiter = Limiter(
+            key_func=get_remote_address,
             key_prefix="nexus",
             default_limits=[
                 f"{settings.RATE_LIMIT_PER_MINUTE}/minute",
