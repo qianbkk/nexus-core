@@ -68,28 +68,88 @@ docker-compose logs -f
 ## 📁 Project Structure
 
 ```
-nexus_core/
-├── backend/
-│   ├── app/
-│   │   ├── core/          # Config, security
-│   │   ├── api/           # REST endpoints
-│   │   ├── models/        # SQLAlchemy models
-│   │   ├── db/            # Database session
-│   │   ├── services/      # Business logic
-│   │   └── utils/         # Helpers
-│   ├── tests/             # Test suite
+nexus-core/
+├── README.md                    # Complete documentation
+├── docker-compose.yml           # Service orchestration
+│
+├── backend/                     # FastAPI Backend (Python 3.11+)
 │   ├── Dockerfile
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   ├── public/
+│   ├── requirements.txt         # Python dependencies
+│   └── app/
+│       ├── main.py              # Application entry point
+│       ├── __init__.py
+│       │
+│       ├── api/                 # API Layer
+│       │   ├── __init__.py
+│       │   └── v1/
+│       │       ├── __init__.py
+│       │       └── endpoints/
+│       │           ├── __init__.py
+│       │           ├── auth.py  # Authentication endpoints
+│       │           └── notes.py # Note management endpoints
+│       │
+│       ├── core/                # Core Configuration & Security
+│       │   ├── __init__.py
+│       │   ├── config.py        # Environment configuration
+│       │   ├── security.py      # JWT, MFA, password hashing
+│       │   └── rate_limiter.py  # Redis-based rate limiting
+│       │
+│       ├── db/                  # Database Layer
+│       │   ├── __init__.py
+│       │   └── session.py       # Async session management
+│       │
+│       ├── models/              # ORM Models
+│       │   ├── __init__.py
+│       │   └── entities.py      # User, Note, AuditLog models
+│       │
+│       ├── services/            # Business Logic
+│       │   └── __init__.py
+│       │
+│       └── utils/               # Utility Functions
+│           └── __init__.py
+│
+├── frontend/                    # React 18 Frontend (TypeScript)
 │   ├── Dockerfile
-│   └── package.json
-├── docker/
-│   └── init.sql
-├── docker-compose.yml
-└── README.md
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.ts
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── .eslintrc.cjs
+│   ├── nginx.conf               # Production nginx config
+│   └── src/
+│       ├── main.tsx             # React entry point
+│       ├── App.tsx              # Root component
+│       ├── index.css            # Global styles
+│       │
+│       ├── components/          # Reusable UI components
+│       ├── pages/               # Page components
+│       ├── hooks/               # Custom React hooks
+│       │   └── index.ts
+│       │
+│       ├── services/            # API clients
+│       │   ├── index.ts
+│       │   └── api.ts           # HTTP client configuration
+│       │
+│       ├── store/               # State management
+│       │   ├── index.ts
+│       │   └── authStore.ts     # Authentication state
+│       │
+│       ├── types/               # TypeScript type definitions
+│       │   └── index.ts
+│       │
+│       └── utils/               # Helper utilities
+│           └── index.ts
+│
+├── docker/                      # Docker Configuration
+│   └── init.sql                 # PostgreSQL initialization script
+│
+└── scripts/                     # Operational Scripts (optional)
 ```
+
+**Total Files**: 42 production-ready files
 
 ## 🔧 Configuration
 
